@@ -1,11 +1,11 @@
 from django.test import TestCase, Client
 from django.contrib.auth import get_user_model
-from django.urls import reverse 
+from django.urls import reverse
 
 class AdminSiteTests(TestCase):
 
     def setUp(self):  # This function will run before every test that we run
-        self.client = Client() 
+        self.client = Client()
         self.admin_user = get_user_model().objects.create_superuser(
             email="admin@indiaappdev.com",
             password="test212"
@@ -28,8 +28,8 @@ class AdminSiteTests(TestCase):
         self.assertContains(res, self.user.email)
         # What 'self.assertContains' does?
         # Answer: This 'assertContains' checks,
-        # if the 'res' has cerain items and it 
-        # also checks if the HTTP response is 
+        # if the 'res' has cerain items and it
+        # also checks if the HTTP response is
         # HTTP200
 
 
@@ -48,12 +48,11 @@ class AdminSiteTests(TestCase):
         res = self.client.get(url)
 
         self.assertEqual(res.status_code, 200)
-        
+
 
     # default django user model has a field called 'username'
     # so, by default django admin expects a 'username' filed
-    # in the User model. But in our case, we don't have a 
-    # 'username' field. So, we've to customize the default 
+    # in the User model. But in our case, we don't have a
+    # 'username' field. So, we've to customize the default
     # django admin behaviour
 
-    
